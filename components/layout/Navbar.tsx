@@ -3,6 +3,7 @@
 import { Menu, X, MessageCircle, ChevronRight } from "lucide-react";
 import { useState } from "react";
 import { usePathname } from "next/navigation";
+import Link from "next/link";
 
 const links = [
   { label: "Inicio", href: "/" },
@@ -20,7 +21,7 @@ export default function Navbar() {
   return (
     <header className="fixed top-0 left-0 z-50 w-full border-b border-white/10 bg-[#05080d]/90 backdrop-blur-xl">
       <div className="container-custom flex h-24 items-center justify-between">
-        <a href="/" className="flex items-center gap-3">
+        <Link href="/" className="flex items-center gap-3">
           <img
             src="/logo-sgc.png"
             alt="SGC Servicios"
@@ -32,17 +33,14 @@ export default function Navbar() {
               SERVICIOS
             </p>
           </div>
-        </a>
+        </Link>
 
         <nav className="hidden items-center gap-9 lg:flex">
           {links.map((link) => {
-            const isActive =
-              link.href === "/servicios"
-                ? pathname === "/servicios"
-                : pathname === "/" && link.href === "/";
+            const isActive = pathname === link.href;
 
             return (
-              <a
+              <Link
                 key={link.label}
                 href={link.href}
                 className={`text-sm font-bold uppercase transition hover:text-orange-500 ${
@@ -52,7 +50,7 @@ export default function Navbar() {
                 }`}
               >
                 {link.label}
-              </a>
+              </Link>
             );
           })}
         </nav>
@@ -88,7 +86,7 @@ export default function Navbar() {
 
             <div className="relative z-10 flex h-full flex-col p-6">
               <div className="flex items-center justify-between border-b border-white/10 pb-6">
-                <a href="/" className="flex items-center gap-3">
+                <Link href="/" className="flex items-center gap-3">
                   <img
                     src="/logo-sgc.png"
                     alt="SGC Servicios"
@@ -100,7 +98,7 @@ export default function Navbar() {
                       SERVICIOS
                     </p>
                   </div>
-                </a>
+                </Link>
 
                 <button
                   onClick={() => setOpen(false)}
@@ -113,7 +111,7 @@ export default function Navbar() {
 
               <nav className="mt-8 flex flex-col gap-3">
                 {links.map((link) => (
-                  <a
+                  <Link
                     key={link.label}
                     href={link.href}
                     onClick={() => setOpen(false)}
@@ -124,7 +122,7 @@ export default function Navbar() {
                       size={22}
                       className="text-orange-500 transition group-hover:translate-x-1"
                     />
-                  </a>
+                  </Link>
                 ))}
               </nav>
 
