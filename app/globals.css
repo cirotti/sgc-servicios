@@ -1,26 +1,68 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --bg: #05080d;
+  --bg-soft: #081018;
+  --orange: #ff5f00;
+  --orange-2: #ff7a1a;
+  --text: #ffffff;
+  --muted: rgba(255, 255, 255, 0.68);
+  --border: rgba(255, 255, 255, 0.12);
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+* {
+  box-sizing: border-box;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  overflow-x: hidden;
+}
+
+.container-custom {
+  width: min(100% - 48px, 1320px);
+  margin-inline: auto;
+}
+
+.orange-text {
+  color: var(--orange);
+}
+
+.section-subtitle {
+  color: var(--orange);
+  text-transform: uppercase;
+  letter-spacing: 0.28em;
+  font-size: 13px;
+  font-weight: 900;
+}
+
+.section-title {
+  font-size: clamp(2rem, 4vw, 3.2rem);
+  font-weight: 900;
+  line-height: 0.95;
+  letter-spacing: 0.05em;
+}
+
+.card {
+  background: linear-gradient(180deg, rgba(255,255,255,.055), rgba(255,255,255,.025));
+  border: 1px solid var(--border);
+  box-shadow: 0 24px 60px rgba(0,0,0,.28);
+}
+
+.orange-btn {
+  background: linear-gradient(135deg, var(--orange), var(--orange-2));
+  color: white;
+  box-shadow: 0 12px 35px rgba(255, 95, 0, 0.26);
+}
+
+@media (max-width: 768px) {
+  .container-custom {
+    width: min(100% - 32px, 1320px);
+  }
 }
